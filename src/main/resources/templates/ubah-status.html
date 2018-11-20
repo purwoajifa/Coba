@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title th:replace="fragments/fragment :: headerFragment('Ubah Status')"></title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+		<div class="container-fluid">
+			<h2>Sistem Informasi IGD</h2>
+			<h4>Selamat datang di Sistem Informasi IGD</h4>
+			<br>
+			<hr>
+			<h4>Ubah Status</h4>
+			<form th:action="@{/pasien/ubah-status}" th:object=${pasien} method="POST">
+				<!-- <input type="hidden" name = "id" th:value="${pasien.id}"> -->
+				<table>
+					<tr>
+		                <td>Status</td>
+		                <td>
+		                    <select  class="form-control" required="required" 
+						       name="id_status" id="id_status">
+						      <option disabled="disabled" selected="selected"> -- 
+						      Pilih Status --
+						      </option>
+						      <option th:each="status : ${listStatus}" th:value="${status.id}" 
+						       th:text="${status.nama}" >
+						      </option>
+						    </select>
+		                </td>
+		            </tr>
+		            <tr>
+		            	<td>Dokter</td>
+		            	<td>
+		            		<input type="text" name="id_dokter" id="id_dokter" disabled="disabled" class="form-control"/>
+		            	</td>
+		            </tr>
+		            <tr>
+		                <td><button type="submit" class="btn btn-primary">Ubah</button><td>
+		            </tr>
+				</table>
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript">
+ 	$(document).ready(function (){ 
+ 		console.log("masuk")
+		$('#id_status').change(function(){
+			console.log("masuk 1")
+			var idStatus = $('#id_status').val();
+			console.log(idStatus)
+			if (idStatus == 2){
+				console.log("masuk 2")
+				/* $('#id_dokter').disabled=true; */
+				document.getElementById("id_dokter").disabled = false;
+			}
+			else {
+				document.getElementById("id_dokter").disabled = true;
+			}
+		});
+ 	});
+	</script>
+</html>

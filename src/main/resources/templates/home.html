@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Home</title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		
+		<div class="container-fluid">			
+			<div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							Ubah Status
+						</div>
+						<div class="card-body">
+							<p class="card-text">Fitur untuk mengubah status penanganan pasien</p>
+							<a class="btn btn-primary" th:href="@{pasien/ubah-status}">Ubah</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+			<!-- <div class="row">
+				<div class="col-md-6">
+					<div class="card">
+						<div class="card-header">
+							Cari Dealer Berdasarkan Id
+						</div>
+						<form th:action="@{/dealer/view}" method="GET">
+							<div class="card-body">
+								<label for="dealerId">ID Dealer</label>
+								<input type="text" name="dealerId" class="form-control"/>
+								<button type="submit" class="btn btn-primary">Cari</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</body>
+</html>
